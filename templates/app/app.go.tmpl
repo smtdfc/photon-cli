@@ -1,0 +1,22 @@
+package app
+
+import (
+  "github.com/smtdfc/photon/"
+  "github.com/smtdfc/photon-echo-adapter"
+  //"github.com/smtdfc/photon-melody-adapter"
+  //"github.com/labstack/echo/v4"
+)
+
+func Init() *photon.App {
+  httpAdapter,_:=photonEchoAdapter.Init()
+  //socketAdapter,_ := photonMelodyAdapter.Init(),
+  
+  app := photon.NewApp()
+  app.Adapter.UseHttpAdapter(httpAdapter)
+  //app.Adapter.UseSocketAdapter(socketAdapter)
+  
+  // Init modules
+  InitModule(app)
+  
+  return app
+}
