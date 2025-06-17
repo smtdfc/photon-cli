@@ -25,7 +25,7 @@ func GenerateApp(name string, path string) error {
 	files := map[string]string{
 		"app/app.go":      "app/app.go.tmpl",
 		"app/module.go":   "app/module.go.tmpl",
-		"internal/domain/main.go":   "domain/main.go.tmpl",
+		"internal/domain/main.go":   "domain/domain.go.tmpl",
 		"internal/domain/interfaces.go":   "domain/interfaces.go.tmpl",
 		"internal/domain/models.go":   "domain/models.go.tmpl",
 
