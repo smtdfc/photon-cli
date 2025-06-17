@@ -24,7 +24,7 @@ func GenerateModule(name, path string) error {
 
 	files := []string{
 		"module.go",
-		"main.go",
+		"init.go",
 		"repository.go",
 		"service.go",
 		"routes.go",
@@ -41,7 +41,7 @@ func GenerateModule(name, path string) error {
 		"model.go":      "model.tmpl",
 		"handler.go":    "handler.tmpl",
 		"module.go":     "module.tmpl",
-		"main.go":       "main.tmpl",
+		"init.go":       "init.tmpl",
 		"repository.go": "repository.tmpl",
 		"service.go":    "service.tmpl",
 		"routes.go":     "routes.tmpl",
