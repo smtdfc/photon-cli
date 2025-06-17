@@ -1,0 +1,14 @@
+package {{.PackageName}}
+
+import (
+  "github.com/smtdfc/photon/pkg/base"
+)
+
+func (m *{{.ModuleName}}Module) InitRoute(){
+  httpController = photon.InitHttpController(
+    m.App,
+    m
+  )
+  
+  httpController.Route("GET","/example", m.Handler.Example)
+}
