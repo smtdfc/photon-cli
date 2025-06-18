@@ -8,6 +8,7 @@ import (
 type {{.ModuleName}}Module struct {
   Module *photon.Module
   App *photon.App 
+  Adapter *photon.AdapterManager
   Inject *{{.ModuleName}}ModuleInjection
   Handler *{{.ModuleName}}ModuleHandler
 }

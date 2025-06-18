@@ -5,10 +5,10 @@ import (
 )
 
 func (m *{{.ModuleName}}Module) InitRoute(){
-  httpController = photon.InitHttpController(
-    m.App,
-    m
-  )
+  httpController := photon.InitHttpController(
+		m.App,
+		m.Module,
+	)
   
   httpController.Route("GET","/example", m.Handler.Example)
 }
