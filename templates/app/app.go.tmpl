@@ -12,7 +12,7 @@ func Init() *photon.App {
   //socketAdapter,_ := photonMelodyAdapter.Init(),
   
   app := photon.NewApp()
-  app.Adapter.UseHttpAdapter(httpAdapter)
+  app.Adapter.UseHttpAdapter(httpAdapter,app)
   //app.Adapter.UseSocketAdapter(socketAdapter)
   
   // Init modules
