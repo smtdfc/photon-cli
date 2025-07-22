@@ -11,6 +11,7 @@ import (
 type ModuleTemplateData struct {
 	PackageName string
 	ModuleName  string
+	Module string
 }
 
 func GenerateFile(path string, tmplPath string, data any) error {

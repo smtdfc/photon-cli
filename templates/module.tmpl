@@ -3,6 +3,7 @@ package {{.PackageName}}
 
 import (
   "github.com/smtdfc/photon"
+  "{{.Module}}/internal/domain"
 )
 
 type {{.ModuleName}}Module struct {
@@ -10,6 +11,7 @@ type {{.ModuleName}}Module struct {
   App *photon.App 
   Adapter *photon.AdapterManager
   Inject *{{.ModuleName}}ModuleInjection
+  Service domain.I{{.ModuleName}}Service
   Handler *{{.ModuleName}}ModuleHandler
 }
 
@@ -22,6 +24,7 @@ func Init(app *photon.App) *{{.ModuleName}}Module{
     App:app,
     Adapter:app.Adapter,
     Inject: injects,
+    Service:InitService(),
     Handler: &{{.ModuleName}}ModuleHandler{},
   }
   

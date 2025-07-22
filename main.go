@@ -1,7 +1,9 @@
 package main
 
-import "github.com/smtdfc/photon-cli/cmd"
+import (
+  "github.com/smtdfc/photon-cli/app"
+)
 
 func main() {
-	cmd.Execute()
+  app.Init().Start("3000")
 }

@@ -47,9 +47,16 @@ func GenerateModule(name, path string) error {
 		"routes.go":     "routes.tmpl",
 	}
 
+	modName, err := ReadGoModModuleName(".")
+	if err != nil {
+		return err
+	}
+
+
 	data := ModuleTemplateData{
 		PackageName: modulePkgName,
 		ModuleName:  moduleName,
+		Module:modName,
 	}
 	for file, tmpl := range templateFiles {
 		err := GenerateFile(filepath.Join(modulePath, file), tmpl, data)
@@ -57,6 +64,8 @@ func GenerateModule(name, path string) error {
 			return fmt.Errorf("failed to generate file %s from template %s: %w", file, tmpl, err)
 		}
 	}
-
+	
+	GenerateFile(filepath.Join(path, "internal/domain/"+moduleName+".go"), "domain/module.go.tmpl", data)
+		
 	return WriteDeclarationFile(path, declaration)
 }
