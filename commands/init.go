@@ -33,21 +33,23 @@ func Init(c *cli.Context) error {
 	projectName := c.Args().Get(0)
 	fmt.Printf("Initializing project %s ...\n", projectName)
 
-	moduleName, err := helpers.GetModuleName(goModFilePath)
+	pkgName, err := helpers.GetModuleName(goModFilePath)
 	if err != nil {
-		moduleName = projectName
+		return err
 	}
 
 	callDir := GetCallerDir()
 	projectFilesMap := map[string]string{
-		"main.go":          "../templates/project/main.go.tmpl",
-		"app/app.go":       "../templates/project/app/app.go.tmpl",
-		"app/module.go":    "../templates/project/app/module.go.tmpl",
-		"domain/domain.go": "../templates/project/domain/domain.go.tmpl",
+		"photon.config.json": "../templates/project/photon.config.json.tmpl",
+		"main.go":            "../templates/project/main.go.tmpl",
+		"app/app.go":         "../templates/project/app/app.go.tmpl",
+		"app/module.go":      "../templates/project/app/module.go.tmpl",
+		"domain/domain.go":   "../templates/project/domain/domain.go.tmpl",
 	}
 
 	data := map[string]any{
-		"ModuleName": moduleName,
+		"PkgName":     pkgName,
+		"ProjectName": projectName,
 	}
 
 	for fileName, tmplFile := range projectFilesMap {
