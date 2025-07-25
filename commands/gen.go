@@ -62,7 +62,7 @@ func Gen(c *cli.Context) error {
 	cwd := helpers.GetCWD()
 
 	fmt.Println("Reading go.mod ...")
-	goModFilePath := filepath.Join(cwd, "photon.config.json")
+	goModFilePath := filepath.Join(cwd, "go.mod")
 	if !helpers.FileExists(goModFilePath) {
 		return fmt.Errorf("Cannot find go.mod file !")
 	}
