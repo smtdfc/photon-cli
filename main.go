@@ -45,6 +45,14 @@ func main() {
 				},
 				Action: commands.Gen,
 			},
+			{
+				Name:  "build",
+				Usage: "Build app for production",
+				Flags: []cli.Flag{
+					&cli.IntFlag{},
+				},
+				Action: commands.Build,
+			},
 		},
 	}
 
