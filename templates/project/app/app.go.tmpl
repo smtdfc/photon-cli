@@ -1,16 +1,16 @@
 package app
 
 import (
-	"github.com/smtdfc/photon"
+	"github.com/smtdfc/photon/core"
+	"github.com/smtdfc/photon/http_adapter"
 )
 
 func Start() {
-	app := photon.CreateApp()
-	app.Adapter.Http = photon.CreateHttpAdapter(&photon.HttpAdapterConfig{
-		App:       app,
+	app := core.CreateApp()
+	app.Adapter.Http = http_adapter.CreateHttpAdapter(&http_adapter.HttpAdapterConfig{
 		IsLogging: true,
 	})
-	
+
 	InitModule(app)
 	app.Start("3000")
 }

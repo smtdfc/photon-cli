@@ -14,11 +14,11 @@
 package {{.ModuleNormalizedName}}
 
 import(
-  "github.com/smtdfc/photon"
+  "github.com/smtdfc/photon/core"
   "{{.PkgName}}/domain"
 )
 
-var _module *photon.Module
+var _module *core.Module
 var _service domain.I{{.ModuleName}}Service
 var initialized bool
 
@@ -28,14 +28,14 @@ func inject[T any](name string) T{
     panic("Module {{.ModuleName}} is not inited !")
   }
   
-  return photon.Inject[T](_module,name)
+  return core.Inject[T](_module,name)
 }
 
 func service() domain.I{{.ModuleName}}Service{
   return _service
 }
 
-func self() *photon.Module{
+func self() *core.Module{
   if _module == nil{
     panic("Module {{.ModuleName}} is not inited !")
   }
@@ -54,12 +54,12 @@ func provide() domain.I{{.ModuleName}}Provide{
   return &{{.ModuleName}}Provide{}
 }
 
-func Init(app *photon.App) *photon.Module{
+func Init(app *core.App) *core.Module{
   if initialized {
     panic("Module {{.ModuleName}} already initialized!")
   }
 
-  _module = photon.CreateModule(app,"{{.ModuleName}}")
+  _module = core.CreateModule(app,"{{.ModuleName}}")
   _module.Provide(provide())
   _module.Router.Prefix = ROUTE_PREFIX
   _service = initService()
