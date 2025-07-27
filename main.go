@@ -53,6 +53,14 @@ func main() {
 				},
 				Action: commands.Build,
 			},
+			{
+				Name:  "test",
+				Usage: "Statt testing app ",
+				Flags: []cli.Flag{
+					&cli.IntFlag{},
+				},
+				Action: commands.Test,
+			},
 		},
 	}
 

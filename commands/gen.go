@@ -19,6 +19,7 @@ func GenModule(appName string, moduleName string, PkgName string, projPath strin
 
 	callDir := GetCallerDir()
 	normalizedName := strings.ToLower(moduleName)
+	appNormalizedName := strings.ToLower(appName)
 	projectFilesMap := map[string]string{
 		"modules/" + normalizedName + "/init.go": "../templates/module/init.go.tmpl",
 		"modules/" + normalizedName + "/config.go": "../templates/module/config.go.tmpl",
@@ -27,12 +28,14 @@ func GenModule(appName string, moduleName string, PkgName string, projPath strin
 		"modules/" + normalizedName + "/handlers.go": "../templates/module/handlers.go.tmpl",
 		"modules/" + normalizedName + "/routes.go": "../templates/module/routes.go.tmpl",
 		"domain/" + normalizedName + ".go":       "../templates/domain/module.go.tmpl",
+		"test/modules/" + normalizedName + "_test.go":       "../templates/test/module_test.go.tmpl",
 	}
 
 	data := map[string]any{
 		"PkgName":              PkgName,
 		"ModuleNormalizedName": normalizedName,
 		"ModuleName":           moduleName,
+		"AppNormaizedName": appNormalizedName,
 	}
 
 	for fileName, tmplFile := range projectFilesMap {
