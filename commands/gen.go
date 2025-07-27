@@ -21,6 +21,9 @@ func GenModule(appName string, moduleName string, PkgName string, projPath strin
 	normalizedName := strings.ToLower(moduleName)
 	projectFilesMap := map[string]string{
 		"modules/" + normalizedName + "/init.go": "../templates/module/init.go.tmpl",
+		"modules/" + normalizedName + "/config.go": "../templates/module/config.go.tmpl",
+		"modules/" + normalizedName + "/service.go": "../templates/module/service.go.tmpl",
+		"modules/" + normalizedName + "/provide.go": "../templates/module/provide.go.tmpl",
 		"domain/" + normalizedName + ".go":       "../templates/domain/module.go.tmpl",
 	}
 
