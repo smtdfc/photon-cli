@@ -18,7 +18,6 @@ import(
   "{{.PkgName}}/domain"
 )
 
-
 var _module *photon.Module
 var _service domain.I{{.ModuleName}}Service
 var initialized bool
@@ -62,6 +61,7 @@ func Init(app *photon.App) *photon.Module{
 
   _module = photon.CreateModule(app,"{{.ModuleName}}")
   _module.Provide(provide())
+  _module.Router.Prefix = ROUTE_PREFIX
   _service = initService()
   initialized = true
   return module

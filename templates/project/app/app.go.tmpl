@@ -1,11 +1,16 @@
 package app
 
-import(
- "github.com/smtdfc/photon"
+import (
+	"github.com/smtdfc/photon"
 )
 
-func Start(){
- app := photon.CreateApp()
- 
- app.Start("3000")
+func Start() {
+	app := photon.CreateApp()
+	app.Adapter.Http = photon.CreateHttpAdapter(&photon.HttpAdapterConfig{
+		App:       app,
+		IsLogging: true,
+	})
+	
+	InitModule()
+	app.Start("3000")
 }

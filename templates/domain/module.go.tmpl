@@ -1,3 +1,17 @@
+// This file defines the core business contracts for the {{.ModuleName}} module.
+//
+// This file contains the interfaces that describe the expected behaviors
+// for the {{.ModuleName}} service layer and dependency injection providers.
+//
+// - I{{.ModuleName}}Service defines the set of business operations
+// that any service implementation must fulfill.
+//
+// - I{{.ModuleName}}Provide defines the methods required for providing
+// dependencies or external integrations needed by the {{.ModuleName}} module.
+//
+// These interfaces are designed to decouple implementation details
+// from the domain logic, enabling flexible composition and easier testing.
+
 package domain
 
 type I{{.ModuleName}}Service interface{}
