@@ -23,7 +23,7 @@ var _service domain.I{{.ModuleName}}Service
 var initialized bool
 
 
-func inject[T any](name: string) T{
+func inject[T any](name string) T{
   if _module == nil{
     panic("Module {{.ModuleName}} is not inited !")
   }
@@ -63,6 +63,7 @@ func Init(app *photon.App) *photon.Module{
   _module.Provide(provide())
   _module.Router.Prefix = ROUTE_PREFIX
   _service = initService()
+  InitRoutes()
   initialized = true
-  return module
+  return _module
 }

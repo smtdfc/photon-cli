@@ -24,6 +24,8 @@ func GenModule(appName string, moduleName string, PkgName string, projPath strin
 		"modules/" + normalizedName + "/config.go": "../templates/module/config.go.tmpl",
 		"modules/" + normalizedName + "/service.go": "../templates/module/service.go.tmpl",
 		"modules/" + normalizedName + "/provide.go": "../templates/module/provide.go.tmpl",
+		"modules/" + normalizedName + "/handlers.go": "../templates/module/handlers.go.tmpl",
+		"modules/" + normalizedName + "/routes.go": "../templates/module/routes.go.tmpl",
 		"domain/" + normalizedName + ".go":       "../templates/domain/module.go.tmpl",
 	}
 
