@@ -2,16 +2,16 @@ package app
 
 import (
 	"github.com/smtdfc/photon/core"
-	httpGatway "github.com/smtdfc/photon-http-gateway"
+  "github.com/smtdfc/photon-http-gateway"
 )
 
 func Start() {
-	app := core.CreateApp()
+	app := core.NewApp()
 	app.SetGateway(
 		"http",
-		httpGatway.New(httpGatway.Config{}),
+		httpGateway.New(httpGateway.Config{}),
 	)
 	
 	InitModules(app)
-	app.Start("3000")
+	app.Start()
 }

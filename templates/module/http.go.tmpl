@@ -1,15 +1,15 @@
-package {{.ModuleNormalizedName}}
+package hello
 
-import httpGateway "github.com/smtdfc/photon-http-gateway"
+import "github.com/smtdfc/photon/core"
+import "github.com/smtdfc/photon-http-gateway"
 
 var (
   ROUTE_PREFIX = ""
 )
 
 func initRoute(){
-  http := ResolveGateway[httpGateway.Gateway](
-    self(),
-    "http",
-  ).CreateScope(ROUTE_PREFIX)
-  
+  http := core.ResolveGateway[*httpGateway.Gateway](self(),"http").CreateScope(self(),ROUTE_PREFIX)
+  http.Get("/hello",func(ctx core.HttpContext){
+    
+  })
 }
