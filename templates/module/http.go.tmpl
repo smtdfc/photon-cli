@@ -1,0 +1,15 @@
+package {{.ModuleNormalizedName}}
+
+import httpGateway "github.com/smtdfc/photon-http-gateway"
+
+var (
+  ROUTE_PREFIX = ""
+)
+
+func initRoute(){
+  http := ResolveGateway[httpGateway.Gateway](
+    self(),
+    "http",
+  ).CreateScope(ROUTE_PREFIX)
+  
+}
